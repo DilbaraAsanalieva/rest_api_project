@@ -19,12 +19,13 @@ public class StudentViewMapper {
         response.setFirstName(student.getFirstName());
         response.setLastName(student.getLastName());
         response.setEmail(student.getEmail());
+        response.setStudyFormat(student.getStudyFormat());
 
         return response;
     }
 
 
-    public List<StudentResponse> getAllStudents(List<Student> students){
+    public List<StudentResponse> view(List<Student> students){
         List<StudentResponse> responses = new ArrayList<>();
         for(Student student: students){
             responses.add(viewStudent(student));

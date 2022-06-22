@@ -1,18 +1,14 @@
 package peaksoft.rest_api_project.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import peaksoft.rest_api_project.repository.StudentRepository;
 import peaksoft.rest_api_project.dto.StudentRequest;
 import peaksoft.rest_api_project.dto.StudentResponse;
-import peaksoft.rest_api_project.dto.StudentResponseView;
 import peaksoft.rest_api_project.entity.Student;
 import peaksoft.rest_api_project.mapper.StudentEditMapper;
 import peaksoft.rest_api_project.mapper.StudentViewMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,6 +31,10 @@ public class StudentService {
         return viewMapper.viewStudent(repository.save(student));
     }
 
+    public List<StudentResponse> getAllStudents(){
+        return viewMapper.view(repository.findAll());
+    }
+
     public StudentResponse findById(long id){
         Student student = repository.findById(id).get();
         return viewMapper.viewStudent(student);
@@ -45,34 +45,6 @@ public class StudentService {
         repository.delete(student);
         return viewMapper.viewStudent(student);
     }
-    public StudentResponse delete(long id){
-        Student student = repository.getById(id);
-        repository.delete(student);
-        return viewMapper.viewStudent(student);
-
-    }
-
-    public StudentResponseView getAllStudentsPagination(String text,int page,int size){
-        StudentResponseView responseView = new StudentResponseView();
-        Pageable pageable = PageRequest.of(page-1,size);
-        responseView.setResponses(view(search(text,pageable)));
-        return responseView;
-    }
-
-    public List<StudentResponse> view(List<Student> students){
-        List<StudentResponse> responses = new ArrayList<>();
-        for (Student student:students){
-            responses.add(viewMapper.viewStudent(student));
-        }
-        return responses;
-    }
-
-    public List<Student> search(String name, Pageable pageable){
-        String text = name == null ? "":name;
-        return repository.searchAndPagination(text.toUpperCase(),pageable);
-    }
-
-
 
 
 

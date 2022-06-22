@@ -15,6 +15,7 @@ public class StudentEditMapper {
         student.setFirstName(request.getFirstName());
         student.setLastName(request.getLastName());
         student.setEmail(request.getEmail());
+        student.setStudyFormat(request.getStudyFormat());
 
         return student;
     }
@@ -23,6 +24,7 @@ public class StudentEditMapper {
         student.setFirstName(request.getFirstName());
         student.setLastName(request.getLastName());
         student.setEmail(request.getEmail());
+        student.setStudyFormat(request.getStudyFormat());
 
     }
 }
