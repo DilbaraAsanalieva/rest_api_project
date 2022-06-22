@@ -21,7 +21,7 @@ public class StudentController {
     @PostMapping
     @Operation(summary = "Welcome to Student create")
     public StudentResponse create(@RequestBody(required = false) StudentRequest request){
-        return service.create(request);
+        return service.create(request.getGroupId(),request);
     }
 
     @PutMapping("/update/{id}")

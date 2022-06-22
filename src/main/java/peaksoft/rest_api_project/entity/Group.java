@@ -1,5 +1,6 @@
 package peaksoft.rest_api_project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -26,9 +28,14 @@ public class Group {
     private Date dateOfStart;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfFinish;
-//    @ManyToOne (cascade = MERGE) //orphanRemoval = true
-//    private Course course;
-//
-//    @OneToMany(mappedBy = "group",cascade = CascadeType.ALL, orphanRemoval = true )
-//    private List<Student> students = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Student> students;
+
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
 }

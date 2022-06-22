@@ -21,7 +21,7 @@ public class TeacherController {
     @PostMapping
     @Operation(summary = "Welcome to Teacher create")
     public TeacherResponse create(@RequestBody(required = false) TeacherRequest request){
-        return service.create(request);
+        return service.create(request.getCourseId(),request);
     }
 
     @PutMapping("/update/{id}")

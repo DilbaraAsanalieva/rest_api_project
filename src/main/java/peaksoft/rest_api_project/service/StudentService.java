@@ -2,6 +2,9 @@ package peaksoft.rest_api_project.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import peaksoft.rest_api_project.entity.Group;
+import peaksoft.rest_api_project.exceptions.GroupNotFoundException;
+import peaksoft.rest_api_project.repository.GroupRepository;
 import peaksoft.rest_api_project.repository.StudentRepository;
 import peaksoft.rest_api_project.dto.StudentRequest;
 import peaksoft.rest_api_project.dto.StudentResponse;
@@ -14,13 +17,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StudentService {
+    private final GroupRepository groupRepository;
     private final StudentRepository repository;
     private final StudentEditMapper editMapper;
     private final StudentViewMapper viewMapper;
 
 
-    public StudentResponse create(StudentRequest studentRequest){
+    public StudentResponse create(Long id, StudentRequest studentRequest){
+        Group group = groupRepository.findById(id).orElseThrow(()->new GroupNotFoundException(
+                "Group with "+ id+" id not found!"
+        ));
         Student student = editMapper.create(studentRequest);
+        group.addStudent(student);
+        student.setGroup(group);
         repository.save(student);
         return viewMapper.viewStudent(student);
     }

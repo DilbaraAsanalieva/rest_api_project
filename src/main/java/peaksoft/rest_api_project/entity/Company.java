@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -19,7 +20,11 @@ public class Company {
     private Long id;
     private String companyName;
     private String locatedCountry;
-//    @OneToMany(mappedBy = "company")
-//    private List<Course> courses = new ArrayList<>();
+    @OneToMany(fetch=FetchType.EAGER ,cascade = {CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "company")
+    private List<Course> courses;
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+    }
 
 }

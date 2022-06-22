@@ -20,6 +20,7 @@ public class StudentViewMapper {
         response.setLastName(student.getLastName());
         response.setEmail(student.getEmail());
         response.setStudyFormat(student.getStudyFormat());
+        response.setGroupName(student.getGroup().getGroupName());
 
         return response;
     }

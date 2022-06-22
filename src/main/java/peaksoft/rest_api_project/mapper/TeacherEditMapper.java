@@ -15,6 +15,8 @@ public class TeacherEditMapper {
         teacher.setFirstName(request.getFirstName());
         teacher.setLastName(request.getLastName());
         teacher.setEmail(request.getEmail());
+        teacher.setCourseId(request.getCourseId());
+
 
         return teacher;
     }
@@ -23,6 +25,8 @@ public class TeacherEditMapper {
         teacher.setFirstName(request.getFirstName());
         teacher.setLastName(request.getLastName());
         teacher.setEmail(request.getEmail());
+        teacher.setCourseId(request.getCourseId());
+
 
     }
 }

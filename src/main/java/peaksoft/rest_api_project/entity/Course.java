@@ -1,5 +1,6 @@
 package peaksoft.rest_api_project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,19 @@ public class Course {
     private String courseName;
     private int duration;
 
-    //    @ManyToOne
-//    private Company company;
+    @Transient
+    private  Long companyId;
+
+    @JsonIgnore
+    @ManyToOne
+    private Company company;
+
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Teacher teacher;
+
+    public void getTeacher(Teacher teacher){
+        this.teacher = teacher;
+    }
+
+
 }

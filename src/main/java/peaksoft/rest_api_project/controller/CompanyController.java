@@ -23,6 +23,7 @@ public class CompanyController {
     public CompanyResponse create(@RequestBody CompanyRequest request){
         return service.create(request);
     }
+
     @PutMapping("/update/{id}")
     @Operation(summary = "update company")
     public CompanyResponse update(@PathVariable long id,@RequestBody(required = false) CompanyRequest request){

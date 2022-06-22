@@ -8,4 +8,6 @@ public class CompanyRequest {
 
     private String companyName;
     private String locatedCountry;
+
+
 }

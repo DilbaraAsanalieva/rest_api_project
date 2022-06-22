@@ -13,5 +13,10 @@ public class StudentResponse {
     private String lastName;
     private String email;
     private StudyFormat studyFormat;
+    private String groupName;
+    private String courseName;
+
+
+
 
 }

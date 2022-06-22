@@ -18,6 +18,7 @@ public class CompanyViewMapper {
         response.setId(company.getId());
         response.setCompanyName(company.getCompanyName());
         response.setLocatedCountry(company.getLocatedCountry());
+        response.setCourses(company.getCourses());
 
         return response;
     }

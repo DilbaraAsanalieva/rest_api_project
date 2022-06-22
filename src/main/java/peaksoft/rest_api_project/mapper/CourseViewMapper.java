@@ -17,8 +17,10 @@ public class CourseViewMapper {
         response.setId(course.getId());
         response.setCourseName(course.getCourseName());
         response.setDuration(course.getDuration());
+        response.setCompanyName(course.getCompany().getCompanyName());
+        response.setTeacher(course.getTeacher());
 
-        return response;
+            return response;
     }
 
 

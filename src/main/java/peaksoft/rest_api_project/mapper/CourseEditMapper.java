@@ -13,6 +13,7 @@ public class CourseEditMapper {
         Course course = new Course();
         course.setCourseName(request.getCourseName());
         course.setDuration(request.getDuration());
+        course.setCompanyId(request.getCompanyId());
 
         return course;
     }
@@ -20,6 +21,8 @@ public class CourseEditMapper {
     public void update(Course course,CourseRequest request){
         course.setCourseName(request.getCourseName());
         course.setDuration(request.getDuration());
+        course.setCompanyId(request.getCompanyId());
+
 
     }
 

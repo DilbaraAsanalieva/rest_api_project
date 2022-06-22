@@ -20,7 +20,7 @@ public class CourseController {
     @PostMapping
     @Operation(summary = "Welcome to Course create ")
     public CourseResponse create(@RequestBody(required = false)CourseRequest request){
-        return service.create(request);
+        return service.create(request.getCompanyId(),request);
     }
 
     @PutMapping("/update/{id}")

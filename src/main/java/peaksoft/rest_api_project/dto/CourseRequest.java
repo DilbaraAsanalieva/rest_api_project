@@ -8,5 +8,7 @@ public class CourseRequest {
 
     private String courseName;
     private int duration;
+    private Long companyId;
+
 
 }
