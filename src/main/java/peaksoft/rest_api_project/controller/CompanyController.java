@@ -3,6 +3,7 @@ package peaksoft.rest_api_project.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.rest_api_project.dto.CompanyRequest;
 import peaksoft.rest_api_project.dto.CompanyResponse;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("api/company")
 @Tag(name = "Company API")
+@PreAuthorize("hasAuthority('SUPER_ADMIN')")
 public class CompanyController {
 
     private final CompanyService service;
